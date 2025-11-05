@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contoh Semua Jenis CSS</title>
+
+  <!-- Linking CSS eksternal -->
+  <link rel="stylesheet" href="index.css" />
+
+  <!-- Embedding CSS (internal) -->
+  <style>
+    .judul-embedding {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      color: darkgreen;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Inline -->
+  <h1 style="font-size: 50px; color: blue; text-align: center;">
+    Contoh Inline CSS
+  </h1>
+
+  <!-- Judul menggunakan CSS Embedding -->
+  <h2 class="judul-embedding">Contoh Embedding CSS</h2>
+
+  <!-- Judul menggunakan CSS Eksternal (Linking) -->
+  <h3 class="judul-linking">Contoh Linking CSS</h3>
+
+  <!-- Paragraf menggunakan CSS Linking -->
+  <p class="paragraf-linking">
+    Ini adalah paragraf yang stylenya ditulis di file index.css.
+  </p>
+
+  <br><br>
+
+  <!-- Gambar dengan CSS Eksternal -->
+  <img src="assets/img/gambar2.jpeg" alt="gambar linking" class="gambar-linking">
+</body>
+</html>
