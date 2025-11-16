@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout Final Sesuai Gambar</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        padding: 2px;
+        gap: 4px; /* jarak antara header dan container, dan footer */
+        background-color: #fafafa;
+      }
+
+      .header {
+        padding: 16px;
+        border: 2px solid gray;
+        background-color: white;
+      }
+
+      .footer {
+        padding: 12px;
+        border: 2px solid gray;
+        background-color: white;
+      }
+
+      .container {
+        display: flex;
+        flex: 1;
+        gap: 16px; /* jarak antara sidebar dan main-area */
+      }
+
+      .sidebar {
+        width: 200px;
+        padding: 16px;
+        background-color: white;
+        border: 2px solid orange;
+        min-height: 400px;
+      }
+
+      .main-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0; /* jarak antara top dan content-area */
+      }
+
+      .top {
+        height: 100px;
+        border: 2px solid blue;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .content-area {
+        display: flex;
+        flex: 1;
+        gap: 16px; /* jarak antara content dan right */
+      }
+
+      .content {
+        flex: 1;
+        border: 2px solid red;
+        background-color: white;
+        align-items: center;
+        padding: 16px;
+      }
+
+      .right {
+        width: 200px;
+        height: 86%;
+        border: 2px solid green;
+        background-color: white;
+        align-items: center;
+        padding: 16px;
+      }
+
+      .sidebar,
+      .right,
+      .top,
+      .content,
+      .header,
+      .footer {
+        min-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">Header</div>
+
+    <div class="container">
+      <div class="sidebar">
+        <p>Sidebar</p>
+      </div>
+
+      <div class="main-area">
+        <div class="top">Top</div>
+
+        <div class="content-area">
+          <div class="content">
+            <span>Content</span>
+          </div>
+          <div class="right">
+            <p>Right</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">Footer</div>
+  </body>
+</html>
