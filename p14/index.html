@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p14</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: sans-serif;
+        }
+        input, select, button {
+            margin: 5px;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="number" name="angka1" id="angka1" placeholder="Nilai 1">
+
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">−</option>
+            <option value="*">×</option>
+            <option value="/">÷</option>
+            <option value="^">^</option> 
+        </select>
+
+        <input type="number" name="angka2" id="angka2" placeholder="Nilai 2">
+
+        <button onclick="hitung()">Submit</button>
+    </div>
+
+    <div id="hasil" style="margin-top: 20px; font-weight: bold;"></div>
+
+    <script>
+        function hitung() {
+            const angka1 = parseFloat(document.getElementById("angka1").value);
+            const angka2 = parseFloat(document.getElementById("angka2").value);
+            const operator = document.getElementById("operator").value;
+            let result;
+
+            if (isNaN(angka1) || isNaN(angka2)) {
+                document.getElementById("hasil").innerText = "Masukkan dua angka yang valid.";
+                return;
+            }
+
+            switch (operator) {
+                case '+':
+                    result = angka1 + angka2;
+                    break;
+                case '-':
+                    result = angka1 - angka2;
+                    break;
+                case '*':
+                    result = angka1 * angka2;
+                    break;
+                case '/':
+                    if (angka2 === 0) {
+                        document.getElementById("hasil").innerText = "Tidak bisa membagi dengan nol.";
+                        return;
+                    }
+                    result = angka1 / angka2;
+                    break;
+                case '^': 
+                    result = Math.pow(angka1, angka2);
+                    break;
+                default:
+                    document.getElementById("hasil").innerText = "Operator tidak dikenal.";
+                    return;
+            }
+
+            document.getElementById("hasil").innerText = `Hasil: ${result}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Pengukur Suhu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+    input, select, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🌡️ Kalkulator Pengukur Suhu</h2>
+    <input type="number" id="suhuInput" placeholder="Masukkan suhu">
+    
+    <select id="konversi">
+      <option value="cToF">Celsius ke Fahrenheit</option>
+      <option value="fToC">Fahrenheit ke Celsius</option>
+    </select>
+    
+    <button onclick="konversiSuhu()">Konversi</button>
+    
+    <div id="hasil"></div>
+  </div>
+
+  <script>
+    function konversiSuhu() {
+      const suhu = parseFloat(document.getElementById('suhuInput').value);
+      const tipe = document.getElementById('konversi').value;
+      const hasil = document.getElementById('hasil');
+
+      if (isNaN(suhu)) {
+        hasil.textContent = "⚠️ Masukkan angka yang valid!";
+        return;
+      }
+
+      let hasilKonversi;
+
+      if (tipe === "cToF") {
+        hasilKonversi = (suhu * 9/5) + 32;
+        hasil.textContent = `${suhu}°C = ${hasilKonversi.toFixed(2)}°F`;
+      } else {
+        hasilKonversi = (suhu - 32) * 5/9;
+        hasil.textContent = `${suhu}°F = ${hasilKonversi.toFixed(2)}°C`;
+      }
+    }
+  </script>
+
+</body>
+</html>
