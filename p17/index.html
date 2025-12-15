@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Nilai Mahasiswa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Daftar Nilai Mahasiswa</h1>
+
+  <!-- Form Input -->
+  <div class="form-input">
+    <input type="text" id="nama" placeholder="Nama Mahasiswa">
+    <input type="number" id="nilai" placeholder="Nilai">
+    <button onclick="tambahNilai()">Tambah</button>
+  </div>
+
+  <!-- Tombol Analisis -->
+  <div class="actions">
+    <button onclick="tampilkanNilai()">Tampilkan Nilai</button>
+    <button onclick="hitungRataRata()">Rata-Rata</button>
+    <button onclick="nilaiTertinggi()">Nilai Tertinggi</button>
+    <button onclick="jumlahLulus()">Jumlah Lulus</button>
+    <button onclick="sortirNilai()">Urutkan Nilai (Desc)</button>
+  </div>
+
+  <!-- Output -->
+  <div id="output"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

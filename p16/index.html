@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tugas Web - Diskon & Admin</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f2f2f2; }
+    h1 { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { padding: 10px; border: 1px solid #ccc; text-align: center; }
+    select, input[type="number"] { padding: 5px; width: 100%; }
+    .result { background: #fff; padding: 15px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+
+<h1>Belanja Produk</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Produk</th>
+      <th>Harga (Rp)</th>
+      <th>Jumlah</th>
+    </tr>
+  </thead>
+  <tbody id="produkTable"></tbody>
+</table>
+
+<label for="pembayaran">Metode Pembayaran:</label>
+<select id="pembayaran">
+  <option value="transfer">Transfer Bank</option>
+  <option value="ewallet">E-Wallet</option>
+  <option value="cod">COD</option>
+  <option value="lainnya">Lainnya</option>
+</select>
+
+<br><br>
+<button onclick="hitungTotal()">Hitung Total</button>
+
+<div class="result" id="hasil">
+  <p>Subtotal: Rp <span id="subtotal">0</span></p>
+  <p>Diskon: Rp <span id="diskon">0</span></p>
+  <p>Biaya Admin: Rp <span id="admin">0</span></p>
+  <hr>
+  <p><strong>Total Bayar: Rp <span id="total">0</span></strong></p>
+</div>
+
+<script>
+  const produk = [
+    { nama: "Buku Tulis", harga: 10000 },
+    { nama: "Pulpen", harga: 5000 },
+    { nama: "Pensil", harga: 3000 },
+    { nama: "Penghapus", harga: 2000 },
+    { nama: "Penggaris", harga: 4000 }
+  ];
+
+  const tableBody = document.getElementById("produkTable");
+
+  produk.forEach((item, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${item.nama}</td>
+      <td>${item.harga}</td>
+      <td><input type="number" min="0" value="0" id="qty${index}" /></td>
+    `;
+    tableBody.appendChild(row);
+  });
+
+  function hitungTotal() {
+    let subtotal = 0;
+
+    produk.forEach((item, index) => {
+      const qty = parseInt(document.getElementById(`qty${index}`).value) || 0;
+      subtotal += item.harga * qty;
+    });
+
+    let diskon = 0;
+    if (subtotal < 200000) {
+      diskon = 0;
+    } else if (subtotal < 500000) {
+      diskon = subtotal * 0.05;
+    } else if (subtotal < 1000000) {
+      diskon = subtotal * 0.10;
+    } else {
+      diskon = subtotal * 0.15;
+    }
+
+    const metode = document.getElementById("pembayaran").value;
+    let biayaAdmin = 0;
+    switch (metode) {
+      case "transfer":
+        biayaAdmin = 4000;
+        break;
+      case "ewallet":
+        biayaAdmin = 2000;
+        break;
+      case "cod":
+        biayaAdmin = 6000;
+        break;
+      default:
+        biayaAdmin = 5000;
+    }
+
+    const total = subtotal - diskon + biayaAdmin;
+
+    document.getElementById("subtotal").textContent = subtotal.toLocaleString();
+    document.getElementById("diskon").textContent = diskon.toLocaleString();
+    document.getElementById("admin").textContent = biayaAdmin.toLocaleString();
+    document.getElementById("total").textContent = total.toLocaleString();
+  }
+</script>
+
+</body>
+</html>
